@@ -1,0 +1,23 @@
+For another example, let’s rewrite the Student class that was used in Section 1. I’ll add a constructor, and I’ll also take the opportunity to make the instance variable, name, private.
+     public class Student {
+private String name;                                 // Student’s name.
+public double test1, test2, test3;           // Grades on three tests.
+Student(String theName) {
+// Constructor for Student objects;
+// provides a name for the Student.
+     name = theName;
+}
+ public String getName() {
+// Getter method for reading the value of the private
+// instance variable, name.
+      return name;
+}
+public double getAverage() {
+// Compute average test grade.
+     return (test1 + test2 + test3) / 3;
+ }
+     }       // end of class Student
+An object of type Student contains information about some particular student. The constructor in this class has a parameter of type String, which specifies the name of that student. Objects of type Student can be created with statements such as:
+ std = new Student("John Smith");
+std1 = new Student("Mary Jones");
+In the original version of this class, the value of name had to be assigned by a program after it created the object of type Student. There was no guarantee that the programmer would always remember to set the name properly. In the new version of the class, there is no way to create a Student object except by calling the constructor, and that constructor automatically sets the name. The programmer’s life is made easier, and whole hordes of frustrating bugs are squashed before they even have a chance to be born.
