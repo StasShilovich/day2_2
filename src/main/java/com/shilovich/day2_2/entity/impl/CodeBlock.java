@@ -2,28 +2,32 @@ package com.shilovich.day2_2.entity.impl;
 
 import com.shilovich.day2_2.entity.TextComponent;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class CodeBlock implements TextComponent {
-    private List<TextComponent> codeBlocks = new LinkedList<>();
+    private String codeBlock;
+
+    public CodeBlock(String codeBlock) {
+        this.codeBlock = codeBlock;
+    }
 
     @Override
     public void add(TextComponent component) {
-        codeBlocks.add(component);
+
     }
 
     @Override
     public void remove(TextComponent component) {
-        codeBlocks.remove(component);
+
     }
 
     @Override
-    public String getComponents() {
-        StringBuilder builder = new StringBuilder();
-        for (TextComponent codeBlock : codeBlocks) {
-            builder.append(codeBlock);
-        }
-        return builder.toString();
+    public void addList(List<TextComponent> components) {
+
+    }
+
+    @Override
+    public String getComponent() {
+        return codeBlock;
     }
 }

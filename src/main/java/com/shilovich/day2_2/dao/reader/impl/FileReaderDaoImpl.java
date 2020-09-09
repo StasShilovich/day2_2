@@ -25,7 +25,7 @@ public class FileReaderDaoImpl implements FileReaderDao {
             Path path = Paths.get(filePath);
             lines = Files.lines(path);
             if (lines != null) {
-                lines.forEach(builder::append);
+                lines.forEach(str -> builder.append(str).append(System.lineSeparator()));
             }
         } catch (IOException e) {
             throw new DaoException("File read fail", e);
