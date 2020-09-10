@@ -11,21 +11,21 @@ import java.util.regex.Pattern;
 
 public class SentenceParserImpl implements TextParser {
     private static final String PUNCT_REGEX = "\\p{Punct}";
-    private static final String SPACE_REGEX = "\\s";
+    private static final String BOUNDARY = "\\s+|(?=[^\\w'])|(?<=\\W)(?=')";
 
     @Override
     public TextComponent parse(String sentence) {
-        TextComponent composite = new TextCompositeImpl();
-        String[] lexemes = sentence.split(SPACE_REGEX);
+        TextComponent sent = new TextCompositeImpl();
+        String[] lexemes = sentence.split(BOUNDARY);
         for (String lexeme : lexemes) {
             Pattern pattern = Pattern.compile(PUNCT_REGEX);
-            Matcher matcher = pattern.matcher(lexeme);
+            Matcher matcher = pattern.matcher(lexeme.trim());
             if (matcher.find()) {
-                composite.add(new Punctuation(lexeme));
-            } else {
-                composite.add(new Word(lexeme));
+                sent.add(new Punctuation(lexeme));
+            } else if (lexeme.trim().length() != 0) {
+                sent.add(new Word(lexeme));
             }
         }
-        return  composite;
+        return sent;
     }
 }

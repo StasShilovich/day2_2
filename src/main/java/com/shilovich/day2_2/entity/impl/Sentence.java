@@ -13,7 +13,6 @@ public class Sentence implements TextComponent {
 
     @Override
     public void add(TextComponent component) {
-
     }
 
     @Override

@@ -28,7 +28,7 @@ public class TextCompositeImpl implements TextComponent {
         StringBuilder builder = new StringBuilder();
         for (TextComponent component : components) {
             builder.append(component.getClass().getSimpleName())
-                    .append("   ")
+                    .append(" || ")
                     .append(component.getComponent())
                     .append(System.lineSeparator());
         }

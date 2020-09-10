@@ -8,5 +8,6 @@ public interface TextComponent {
     void remove(TextComponent component);
 
     void addList(List<TextComponent> components);
+
     String getComponent();
 }
