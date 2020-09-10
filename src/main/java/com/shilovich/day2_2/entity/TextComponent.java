@@ -5,9 +5,9 @@ import java.util.List;
 public interface TextComponent {
     void add(TextComponent component);
 
-    void remove(TextComponent component);
+    ComponentType getType();
 
-    void addList(List<TextComponent> components);
+    List<TextComponent> receiveComponents();
 
     String getComponent();
 }

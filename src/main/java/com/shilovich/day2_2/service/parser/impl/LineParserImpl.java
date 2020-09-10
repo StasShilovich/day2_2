@@ -1,5 +1,6 @@
 package com.shilovich.day2_2.service.parser.impl;
 
+import com.shilovich.day2_2.entity.ComponentType;
 import com.shilovich.day2_2.entity.TextComponent;
 
 import com.shilovich.day2_2.entity.impl.CodeBlock;
@@ -15,13 +16,13 @@ public class LineParserImpl implements TextParser {
     @Override
     public TextComponent parse(String line) {
         ServiceFactory factory = ServiceFactory.getInstance();
-        TextParser sentenceParser = factory.getSentenceParser();
+        TextParser paragraphParser = factory.getParagraphParser();
         Pattern pattern = Pattern.compile(SENTENCE_REGEX);
         Matcher matcher = pattern.matcher(line.trim());
         if (matcher.find()) {
-            return sentenceParser.parse(line);
+            return paragraphParser.parse(line);
         } else {
-            return new CodeBlock(line);
+            return new CodeBlock(line, ComponentType.CODE_BLOCK);
         }
     }
 }

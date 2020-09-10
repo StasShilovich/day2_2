@@ -1,33 +1,35 @@
 package com.shilovich.day2_2.entity.impl;
 
+import com.shilovich.day2_2.entity.ComponentType;
 import com.shilovich.day2_2.entity.TextComponent;
 
 import java.util.List;
 
 public class Punctuation implements TextComponent {
-    private String punct;
+    private String punctuation;
+    private ComponentType type;
 
-    public Punctuation( String punct) {
-        this.punct = punct;
+    public Punctuation(String punctuation, ComponentType type) {
+        this.punctuation = punctuation;
+        this.type = type;
     }
 
     @Override
     public void add(TextComponent component) {
-
     }
 
     @Override
-    public void remove(TextComponent component) {
-
+    public ComponentType getType() {
+        return type;
     }
 
     @Override
-    public void addList(List<TextComponent> components) {
-
+    public List<TextComponent> receiveComponents() {
+        return null;
     }
 
     @Override
     public String getComponent() {
-        return punct;
+        return String.valueOf(punctuation);
     }
 }

@@ -1,12 +1,20 @@
 package com.shilovich.day2_2.entity.impl;
 
+import com.shilovich.day2_2.entity.ComponentType;
 import com.shilovich.day2_2.entity.TextComponent;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class TextCompositeImpl implements TextComponent {
+public class TextComposite implements TextComponent {
+    private static final String SPACE_BAR = " ";
     private List<TextComponent> components = new LinkedList<>();
+    ComponentType type;
+
+
+    public TextComposite(ComponentType type) {
+        this.type = type;
+    }
 
     @Override
     public void add(TextComponent component) {
@@ -14,23 +22,20 @@ public class TextCompositeImpl implements TextComponent {
     }
 
     @Override
-    public void remove(TextComponent component) {
-        components.remove(component);
+    public ComponentType getType() {
+        return type;
     }
 
     @Override
-    public void addList(List<TextComponent> components) {
-        this.components.addAll(components);
+    public List<TextComponent> receiveComponents() {
+        return components;
     }
 
     @Override
     public String getComponent() {
         StringBuilder builder = new StringBuilder();
         for (TextComponent component : components) {
-            builder.append(component.getClass().getSimpleName())
-                    .append(" || ")
-                    .append(component.getComponent())
-                    .append(System.lineSeparator());
+            builder.append(component.getComponent()).append(SPACE_BAR);
         }
         return builder.toString();
     }
